@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🛒 Global SuperStore — Interactive Business Dashboard
 
 An interactive Streamlit dashboard for analyzing sales, profit, and segment performance.
