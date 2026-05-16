@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 # Page config 
 st.set_page_config(page_title="SuperStore Dashboard", layout="wide", page_icon="🛒")
 
+
 # Load & clean data 
 @st.cache_data
 def load_data():
