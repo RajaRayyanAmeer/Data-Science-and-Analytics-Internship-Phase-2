@@ -2,6 +2,56 @@
 
 An interactive Streamlit dashboard for analyzing sales, profit, and segment performance.
 
+## Features
+- **Filters:** Region, Category, Sub-Category, Year Range
+- **KPIs:** Total Sales, Profit, Profit Margin, Orders, Units Sold
+- **Charts:**
+  - Monthly Sales & Profit trend
+  - Sales by Category (donut)
+  - Top 5 Customers by Sales
+  - Profit by Segment
+  - Sales by Region
+  - Sub-Category Sales vs Profit scatter
+  - Discount vs Profit impact
+- **Raw Data Table** with all filters applied
+
+## Files
+| File | Description |
+|------|-------------|
+| `app.py` | Streamlit dashboard |
+| `SuperStore_Analysis.ipynb` | Jupyter notebook (EDA + insights) |
+| `SuperStore.csv` | Dataset |
+| `requirements.txt` | Python dependencies |
+
+# 🛒 Global SuperStore — Interactive Business Dashboard
+
+An interactive Streamlit dashboard for analyzing sales, profit, and segment performance.
+
+## Features
+- **Filters:** Region, Category, Sub-Category, Year Range
+- **KPIs:** Total Sales, Profit, Profit Margin, Orders, Units Sold
+- **Charts:**
+  - Monthly Sales & Profit trend
+  - Sales by Category (donut)
+  - Top 5 Customers by Sales
+  - Profit by Segment
+  - Sales by Region
+  - Sub-Category Sales vs Profit scatter
+  - Discount vs Profit impact
+- **Raw Data Table** with all filters applied
+
+## Files
+| File | Description |
+|------|-------------|
+| `app.py` | Streamlit dashboard |
+| `SuperStore_Analysis.ipynb` | Jupyter notebook (EDA + insights) |
+| `SuperStore.csv` | Dataset |
+| `requirements.txt` | Python dependencies |
+
+# 🛒 Global SuperStore — Interactive Business Dashboard
+
+An interactive Streamlit dashboard for analyzing sales, profit, and segment performance.
+
 ## Setup & Run
 
 ```bash
@@ -29,3 +79,7 @@ streamlit run app.py
 | `SuperStore_Analysis.ipynb` | Jupyter notebook (EDA + insights) |
 | `SuperStore.csv` | Dataset |
 | `requirements.txt` | Python dependencies |
+
+https://data-science-and-analytics-internship-phase-2-npq5eovlokty8dce.streamlit.app/
+
+A functional link, to check it on your own.
