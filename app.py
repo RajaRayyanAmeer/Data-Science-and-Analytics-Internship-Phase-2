@@ -1,16 +1,12 @@
-"""
-Global SuperStore - Interactive Business Dashboard
-"""
-
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
-# ── Page config ──────────────────────────────────────────────────────────────
+# Page config 
 st.set_page_config(page_title="SuperStore Dashboard", layout="wide", page_icon="🛒")
 
-# ── Load & clean data ────────────────────────────────────────────────────────
+# Load & clean data 
 @st.cache_data
 def load_data():
     df = pd.read_csv("SuperStore.csv", encoding="latin1")
@@ -22,7 +18,7 @@ def load_data():
 
 df = load_data()
 
-# ── Sidebar filters ───────────────────────────────────────────────────────────
+# Sidebar filters 
 st.sidebar.title("🔍 Filters")
 
 regions = ["All"] + sorted(df["Region"].dropna().unique().tolist())
@@ -43,19 +39,19 @@ sel_sub = st.sidebar.selectbox("Sub-Category", sub_options)
 years = sorted(df["Order_Date"].dt.year.dropna().unique().astype(int).tolist())
 year_range = st.sidebar.select_slider("Year Range", options=years, value=(min(years), max(years)))
 
-# ── Apply filters ────────────────────────────────────────────────────────────
+# Apply filters 
 fdf = df.copy()
 if sel_region   != "All": fdf = fdf[fdf["Region"]       == sel_region]
 if sel_category != "All": fdf = fdf[fdf["Category"]     == sel_category]
 if sel_sub      != "All": fdf = fdf[fdf["Sub_Category"] == sel_sub]
 fdf = fdf[fdf["Order_Date"].dt.year.between(year_range[0], year_range[1])]
 
-# ── Header ────────────────────────────────────────────────────────────────────
+# Header 
 st.title("🛒 Global SuperStore Dashboard")
 st.markdown("Interactive analysis of **sales, profit & segment performance**.")
 st.markdown("---")
 
-# ── KPI Cards ─────────────────────────────────────────────────────────────────
+# KPI Cards 
 total_sales   = fdf["Sales"].sum()
 total_profit  = fdf["Profit"].sum()
 profit_margin = (total_profit / total_sales * 100) if total_sales else 0
@@ -71,7 +67,7 @@ k5.metric("🔢 Units Sold",     f"{total_qty:,}")
 
 st.markdown("---")
 
-# ── Row 1: Sales trend + Category breakdown ───────────────────────────────────
+# Row 1: Sales trend + Category breakdown 
 c1, c2 = st.columns([2, 1])
 
 with c1:
@@ -98,7 +94,7 @@ with c2:
                        legend=dict(orientation="h", y=-0.1))
     st.plotly_chart(fig2, use_container_width=True)
 
-# ── Row 2: Top 5 Customers + Segment + Region ─────────────────────────────────
+# Row 2: Top 5 Customers + Segment + Region
 c3, c4, c5 = st.columns(3)
 
 with c3:
@@ -131,7 +127,7 @@ with c5:
                        xaxis=dict(tickangle=-30))
     st.plotly_chart(fig5, use_container_width=True)
 
-# ── Row 3: Sub-category profit + Discount vs Profit scatter ───────────────────
+# Row 3: Sub-category profit + Discount vs Profit scatter
 c6, c7 = st.columns([1, 1])
 
 with c6:
@@ -159,7 +155,7 @@ with c7:
                        legend=dict(orientation="h", y=-0.15))
     st.plotly_chart(fig7, use_container_width=True)
 
-# ── Raw data preview ──────────────────────────────────────────────────────────
+# Raw data preview
 with st.expander("📋 View Filtered Data"):
     st.dataframe(fdf[["Order_Date","Customer_Name","Category","Sub_Category",
                        "Region","Segment","Sales","Profit","Quantity","Discount"]]
